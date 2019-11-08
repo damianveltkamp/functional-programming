@@ -27,7 +27,7 @@ function parseData(source){
         .filter(removeEmptyEntries)
         .map(checkIfNoLoan)
         .map(removeNonNumericals)
-        .map(calculateAvarage)
+        .map(calculateAverage)
     writeData(selection)
 }
 
@@ -42,6 +42,7 @@ function filterProperties(item){
         studieschuld: item['Hoe hoog is je studieschuld op dit moment?']
     }
 }
+
 function removeEmptyEntries(item) {
     return item.studieschuld != ''
 }
@@ -56,6 +57,7 @@ function checkIfNoLoan(item) {
 }
 
 function removeNonNumericals(item) {
+    console.log(item)
     item.studieschuld =  item.studieschuld.split('-')
     if(!item.studieschuld[1]) {
         item.studieschuld =  item.studieschuld[0].split(' ')
@@ -70,7 +72,7 @@ function removeNonNumericals(item) {
     return item
 }
 
-function calculateAvarage(item) {
+function calculateAverage(item) {
     if(item.studieschuld[1]) {
         const val1 = parseInt(item.studieschuld[0])
         const val2 = parseInt(item.studieschuld[1])
@@ -94,7 +96,7 @@ function writeData(data, fileIndex = 0) {
         { encoding: 'utf8', flag: 'wx'},
         function(err) {
             if (err && err.code == "EEXIST") {
-                writeDataFile(data, ++fileIndex)
+                writeData(data, ++fileIndex)
             } else if (err) {
                 return console.log(err)
             } else {
