@@ -1,23 +1,24 @@
 {
-  "name": "functional-programming",
+  "name": "webpack-boilerplate",
   "version": "1.0.0",
-  "description": "Repository for the functional programming course",
-  "main": "scripts/cleandata.js",
+  "description": "",
+  "main": "index.js",
   "scripts": {
+    "dev": "webpack-dev-server",
+    "prod": "webpack",
     "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/damian1997/functional-programming.git"
   },
   "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/damian1997/functional-programming/issues"
-  },
-  "homepage": "https://github.com/damian1997/functional-programming#readme",
-  "dependencies": {
-    "d3-dsv": "^1.1.1",
-    "express": "^4.17.1"
+  "devDependencies": {
+    "css-loader": "^3.2.0",
+    "file-loader": "^4.2.0",
+    "html-loader": "^0.5.5",
+    "html-webpack-plugin": "^3.2.0",
+    "style-loader": "^1.0.0",
+    "url-loader": "^2.2.0",
+    "webpack": "^4.41.2",
+    "webpack-cli": "^3.3.10",
+    "webpack-dev-server": "^3.9.0"
   }
 }
