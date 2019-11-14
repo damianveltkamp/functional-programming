@@ -18,6 +18,10 @@ The circle that is displayed on the map where weapons have been found will grow 
 <img src="dist/images/github-images/concept-schets1-hover.jpeg">
 <img src="dist/images/github-images/concept-schets2.jpeg">
 
+### Visuals
+<img src="dist/images/github-images/concept1.png">
+<img src="dist/images/github-images/concept2.png">
+
 ### Benodigde data
 * Objects of the weapon category
 * Geonames pared with those objects
