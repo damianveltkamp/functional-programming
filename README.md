@@ -19,7 +19,7 @@ The circle that is displayed on the map where weapons have been found will grow 
 <img src="dist/images/github-images/concept-schets2.jpeg">
 
 ### Visuals
-<img src="dist/images/github-images/concept1.png">
+<img src="dist/images/github-images/concept-1.png">
 <img src="dist/images/github-images/concept2.png">
 
 ### Benodigde data
