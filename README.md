@@ -14,9 +14,9 @@ The concept of this appliction revolves around the weapons collection of the NMV
 The circle that is displayed on the map where weapons have been found will grow depending on how many weapons have been found in that erea.
 
 ### Early concept sketches
-<img src="dist/images/concept-schets1.JPG">
-<img src="dist/images/concept-schets1-hover.JPG">
-<img src="dist/images/concept-schets2.JPG">
+<img src="dist/images/github-images/concept-schets1.jpeg">
+<img src="dist/images/github-images/concept-schets1-hover.jpeg">
+<img src="dist/images/github-imagesconcept-schets2.jpeg">
 
 ### Benodigde data
 * Objects of the weapon category
