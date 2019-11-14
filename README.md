@@ -16,7 +16,7 @@ The circle that is displayed on the map where weapons have been found will grow 
 ### Early concept sketches
 <img src="dist/images/github-images/concept-schets1.jpeg">
 <img src="dist/images/github-images/concept-schets1-hover.jpeg">
-<img src="dist/images/github-imagesconcept-schets2.jpeg">
+<img src="dist/images/github-images/concept-schets2.jpeg">
 
 ### Benodigde data
 * Objects of the weapon category
