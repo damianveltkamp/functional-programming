@@ -1,6 +1,5 @@
 const fetch = require('node-fetch')
 const fs = require('fs')
-const d3 = require('d3')
 
 const settings = {
     apiUrl: 'https://api.data.netwerkdigitaalerfgoed.nl/datasets/ivo/NMVW/services/NMVW-26/sparql',
