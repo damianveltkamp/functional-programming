@@ -1,25 +1,29 @@
 const fetch = require('node-fetch')
 const fs = require('fs')
+const d3 = require('d3')
 
 const settings = {
     apiUrl: 'https://api.data.netwerkdigitaalerfgoed.nl/datasets/ivo/NMVW/services/NMVW-26/sparql',
     query: `PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-    PREFIX dc: <http://purl.org/dc/elements/1.1/>
-    PREFIX dct: <http://purl.org/dc/terms/>
-    PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
-    PREFIX edm: <http://www.europeana.eu/schemas/edm/>
-    PREFIX foaf: <http://xmlns.com/foaf/0.1/>
-    PREFIX gn: <http://www.geonames.org/ontology#> 
-    PREFIX wgs84: <http://www.w3.org/2003/01/geo/wgs84_pos#>
-    SELECT ?cho ?title ?lat ?long ?typeLabel WHERE {
-      <https://hdl.handle.net/20.500.11840/termmaster12435> skos:narrower* ?type .
-      ?type skos:prefLabel ?typeLabel .
-      ?foobar skos:exactMatch/wgs84:lat ?lat .
-      ?foobar skos:exactMatch/wgs84:long ?long .
-      ?foobar skos:exactMatch/gn:parentCountry ?land .
-      ?cho edm:object ?type .
-      ?cho dc:title ?title .
-    } LIMIT 5000`,
+PREFIX dc: <http://purl.org/dc/elements/1.1/>
+PREFIX dct: <http://purl.org/dc/terms/>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX edm: <http://www.europeana.eu/schemas/edm/>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX gn: <http://www.geonames.org/ontology#> 
+PREFIX wgs84: <http://www.w3.org/2003/01/geo/wgs84_pos#>
+
+SELECT ?cho ?title ?typeLabel ?long ?lat ?landLabel WHERE {
+
+  <https://hdl.handle.net/20.500.11840/termmaster12435> skos:narrower* ?type .
+  ?type skos:prefLabel ?typeLabel .
+  ?foobar skos:exactMatch/wgs84:lat ?lat .
+  ?foobar skos:exactMatch/wgs84:long ?long .
+  ?foobar skos:exactMatch/gn:parentCountry ?land .
+  ?land gn:name ?landLabel .
+  ?cho edm:object ?type .
+  ?cho dc:title ?title .
+} LIMIT 10000`,
     outputPath: 'dist/data/output/',
     outputFileName: 'geoJsonData'
 }
@@ -34,12 +38,14 @@ const geoJson = {
     type: 'FeatureCollection',
     features: []
 }
+const uniqueCordsContainer = []
 
 fetchdata(settings.apiUrl, settings.query)
 .then(data => processData(data))
 
 function processData(data) {
-    data.results.bindings.map(convertToFeatureObject)
+    data.results.bindings
+        .map(convertToFeatureObject)
         .map(pushFeatures)
     writeData(geoJson)
 }
@@ -49,6 +55,7 @@ function convertToFeatureObject(item) {
         type: 'Feature',
         properties: {
             // Add extra properties to the feature here i.e. Popups
+            country: item.landLabel.value
         },
         geometry: {
             type: 'Point',

@@ -1,5 +1,25 @@
-.image-test {
-    width: 100px;
-    height: 100px;
-    background: url('../images/cat-pet-animal-domestic-104827.jpeg');
+body {
+    margin: 0px;
+}
+
+.sphere {
+    fill: rgba(255,0,0,.5);
+}
+
+.country {
+    fill: white;
+    stroke: black;
+    stroke-opacity: 0.1;
+}
+
+svg {
+    width: 960px;
+    height: 500px;
+}
+
+.circles {
+    fill: blue;
+}
+.foo {
+    fill: brown;
 }
