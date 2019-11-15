@@ -9,6 +9,7 @@ Demo: [Demo link](https://gallant-noyce-4ba263.netlify.com/)
 * [Concept](#concept)
 * [Installing](#installing)
 * [Credits](#credits)
+* [Honourable mentions](#honourable-mentions)
 
 ## Concept
 The concept of this appliction revolves around the weapons collection of the NMVW. I want to show where the most weapons have been found based on the geonames that are pared with the objects, and show wich type of weapon where most found in a specific area. I got my inspiration for this concept from [Trulia](https://www.trulia.com/research/where-are-house-hunters-searching/), here they show where people are searching for a new home.
@@ -53,3 +54,8 @@ npm run prod
 
 ## Credits
 Credits go out to [Laurens](https://github.com/Razpudding), [Danny](https://github.com/dandevri) and Robert (have not been able to find your github *SADFACE*) for profiding us with all the information we need to get through this course.
+
+## Honourable mentions
+* [Wessel smit](https://github.com/WesselSmit)
+* Sjors Eveleens (Cant find your github *SADFACE*)
+* Thijs Spijker (Cant find your github *SADFACE*)
