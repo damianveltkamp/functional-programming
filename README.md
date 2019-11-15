@@ -1,7 +1,9 @@
 # Functional-programming 
 Repository for the functional programming course
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/43248ba6-c26d-4375-a94c-d4e2d4f76de6/deploy-status)](https://app.netlify.com/sites/wizardly-lovelace-12c5cc/deploys)
+Demo: [Demo link](https://gallant-noyce-4ba263.netlify.com/)
+
+[![Netlify Status](https://api.netlify.com/api/v1/badges/72550cb8-b417-4853-96df-ebbbc71e130b/deploy-status)](https://app.netlify.com/sites/gallant-noyce-4ba263/deploys)
 
 ## Table of contents
 * [Concept](#concept)
@@ -25,6 +27,7 @@ The circle that is displayed on the map where weapons have been found will grow 
 ### Benodigde data
 * Objects of the weapon category
 * Geonames pared with those objects
+* Parent country
 * Type of weapon
 
 ## Installing
@@ -38,12 +41,14 @@ Install packages
 npm install
 ```
 
-### data cleaning script install
-To use the datacleaning script you have to run the following commands inside your directory via terminal
-
+#### Running dev
 ```
-mkdir data
-mkdir output
+npm run dev
+```
+
+#### Serving production files
+```
+npm run prod
 ```
 
 ## Credits
