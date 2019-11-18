@@ -3,26 +3,25 @@ const fs = require('fs')
 
 const settings = {
     apiUrl: 'https://api.data.netwerkdigitaalerfgoed.nl/datasets/ivo/NMVW/services/NMVW-26/sparql',
-    query: `PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+    query: `PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX edm: <http://www.europeana.eu/schemas/edm/>
 PREFIX dc: <http://purl.org/dc/elements/1.1/>
 PREFIX dct: <http://purl.org/dc/terms/>
-PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
-PREFIX edm: <http://www.europeana.eu/schemas/edm/>
-PREFIX foaf: <http://xmlns.com/foaf/0.1/>
-PREFIX gn: <http://www.geonames.org/ontology#> 
 PREFIX wgs84: <http://www.w3.org/2003/01/geo/wgs84_pos#>
-
-SELECT ?cho ?title ?typeLabel ?long ?lat ?landLabel WHERE {
-
-  <https://hdl.handle.net/20.500.11840/termmaster12435> skos:narrower* ?type .
-  ?type skos:prefLabel ?typeLabel .
-  ?foobar skos:exactMatch/wgs84:lat ?lat .
-  ?foobar skos:exactMatch/wgs84:long ?long .
-  ?foobar skos:exactMatch/gn:parentCountry ?land .
-  ?land gn:name ?landLabel .
-  ?cho edm:object ?type .
-  ?cho dc:title ?title .
-} LIMIT 10000`,
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX gn: <http://www.geonames.org/ontology#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+SELECT ?cho ?landName ?lat ?long WHERE {
+   <https://hdl.handle.net/20.500.11840/termmaster12435> skos:narrower* ?type .
+   ?cho edm:object ?type .
+   ?cho dct:spatial ?place .
+   ?place skos:exactMatch/gn:parentCountry ?land .
+   ?land gn:name ?landName . 
+   ?land wgs84:lat ?lat .
+   ?land wgs84:long ?long
+} limit 50000`,
     outputPath: 'dist/data/output/',
     outputFileName: 'geoJsonData'
 }
@@ -54,7 +53,7 @@ function convertToFeatureObject(item) {
         type: 'Feature',
         properties: {
             // Add extra properties to the feature here i.e. Popups
-            country: item.landLabel.value
+            country: item.landName.value
         },
         geometry: {
             type: 'Point',
