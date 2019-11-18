@@ -21,7 +21,7 @@ SELECT ?cho ?landName ?lat ?long WHERE {
    ?land gn:name ?landName . 
    ?land wgs84:lat ?lat .
    ?land wgs84:long ?long
-} limit 50000`,
+}`,
     outputPath: 'dist/data/output/',
     outputFileName: 'geoJsonData'
 }
